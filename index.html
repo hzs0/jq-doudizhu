@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>斗地主</title>
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="./js/game.js"></script>
+	<script type="text/javascript" src="./js/animate.js"></script>
+	<script type="text/javascript">
+			$(function(){
+				setTimeout(function () {
+					$('.jump').click(function (){
+					 $('#bg-box').remove();
+					 $('.jump').css({'display':'none'})
+					$('#mp3').trigger('play').css({'opacity':'0'}); //点击进入游戏之后背景音乐播放
+					music();
+					$('#rongqi').remove();	
+				})
+			},11000) 	//等待加载动画完成后才可以点击进入游戏
+				let progress=document.getElementById('progress');
+				let num =1;
+				let sum =0;
+				time =setInterval(function () {
+					progress.style.width= num+'%';
+					progress.innerText='loading';
+					if(num==100){
+						clearInterval(time);
+					}
+					num++;
+				},100);
+				time1= setInterval(function(){
+					sum++;
+					if(sum==100){
+						clearInterval(time1);
+						progress.innerHTML="加载完毕";
+					
+					}
+				},100)
+
+				function music(){
+					//暂停或者播放背景音乐
+					let music_btn = document.getElementsByClassName('music')[0].getElementsByTagName('a')[0];
+					let mp3 = document.getElementById('mp3');
+					let statu = true;
+					console.log(music_btn);
+					music_btn.onclick = function(){
+						// alert(1)
+						if(statu == true){
+							mp3.pause();
+							statu = false;
+							
+						}else{
+							mp3.play();
+							statu = true;
+						}
+					}
+				}
+				
+			})
+			
+	</script>
+</head>
+<body onload="document.body.style.cursor='url(./images/mouse.ico),auto'">
+<div class="index-bg-box">
+	<div id="bg-box">
+		<video autoplay id='myvideo' width="100%"	height="150%" type='video/mp4' src='./video/bg.mp4'	 "-webkit-playsinline="true" loop="loop" "></video>
+	</div>
+	<button class="jump">进入游戏</button>
+
+	<!-- <audio controls="controls"  class="bg-music" loop="loop" >
+	  <source src="./video/江上清风游.mp3" type="audio/mp3"  />
+	</audio> -->
+	<div id="rongqi">
+		<div class='gif-box'>
+			<img src="./images/liubei.gif">
+		</div>
+		<div id="progress"></div>
+
+	</div>
+</div>	
+<div class="bigbox">
+	<div class="boom">
+		<video type="mp4" src="" class="video" autoplay="autoplay"></video>
+	</div>
+	<div class="logo">
+		<img src="./images/logo.png">
+	</div>
+	<div class="boom-role">
+		<img src="">
+	</div>
+	<div class="music">
+		<a href="#"></a>
+	</div>
+	<audio id="mp3" src="./video/江上清风游.mp3"  loop="loop"></audio>
+	<audio id="audio" src="" autoplay></audio>
+	<audio id="audio1" src="" autoplay></audio>
+	<div class="trip">
+	</div>
+	<!-- 背影移动的云 -->
+	<div class="cloud">
+		<img src="./images/云.png">
+		<img src="./images/云.png">
+	</div>
+	<!-- <img src="./bgimg/0.jpg" style="opacity: 1;z-index: -1"> -->
+	<div class="left">
+		<ul class="play_1 play_poker" style="left: 100px;"></ul>
+		<p class="get_boss" style="top:320px;right:-200px;">
+			<a href="#" class="get"></a>
+			<a href="#" class="cancel"></a>
+		</p>
+		<p class="play_btn" style="top:320px;right:-200px;">
+			<a href="#" class="play"></a>
+			<a href="#" class="pass"></a>
+		</p>
+		<p class="text no1">
+			<!-- 不抢 -->
+		</p>
+		<div class="role_1">
+			<!-- <img src="../roleimg/15.png"> -->
+		</div>
+		<div class="clock clopos1">
+			<p></p>	
+		</div>
+		<div class="ident idpos1">
+			<!-- <img src="./images/tie.png"> -->
+		</div>
+		<!-- 积分 -->
+		<div class="point poi1">
+			<h1 class="bot"><em>底分：</em><p></p></h1>
+			<h1 class="total"><em>总分：</em><p></p></h1>
+		</div>
+	</div>
+	<div class="mid">
+		<div class="mid_top">
+			<ul class="all_poker">
+				<!-- <li class="back"></li> -->
+			</ul>
+
+			<ul class="desktop_poker">
+				<!-- 生成桌面牌 -->
+			</ul>
+		</div>
+		<div class="mid_end">
+			<ul class="play_2 play_poker" style="top: 100px;">
+				<!-- <li style="width: 125px; height: 175px; background: url(./images/14.png) -162px -5px;"></li> -->
+			</ul>
+			<p class="get_boss" style="top: 30px;left:500px;width:250px;">
+				<a href="#" class="get"></a>
+				<a href="#" class="cancel"></a>
+			</p>
+			<p class="play_btn" style="top: 30px;left:500px;width:250px;">
+				<a href="#" class="play"></a>
+				<a href="#" class="pass"></a>
+			</p>
+			<p class="text no2">
+				<!-- 不抢 -->
+			</p>
+			<div class="role_2">
+				<!-- <img src="../roleimg/15.png"> -->
+			</div>
+			<div class="clock clopos2">
+				<p></p>
+			</div>
+			<div class="ident idpos2">
+				<!-- <img src="./images/tie.png"> -->
+			</div>
+			<!-- 积分 -->
+			<div class="point poi2">
+				<h1 class="bot"><em>底分：</em><p></p></h1>
+				<h1 class="total"><em>总分：</em><p></p></h1>
+			</div>
+		</div>
+	</div>
+	<div class="right">
+		<ul class="play_3 play_poker" style="right: 130px;"></ul>
+		<p class="get_boss" style="top: 320px;left:-225px;">
+			<a class="get"></a>
+			<a class="cancel"></a>
+		</p>
+		<p class="play_btn" style="top: 320px;left:-225px;">
+			<a href="#" class="play"></a>
+			<a href="#" class="pass"></a>
+		</p>
+		<p class="text no3">
+			<!-- 不抢 -->
+		</p>
+		<div class="role_3">
+			<!-- <img src="../roleimg/15.png"> -->
+		</div>
+		<div class="clock clopos3">
+			<p></p>	
+		</div>
+		<div class="ident idpos3">
+			<!-- <img src="./images/tie.png"> -->
+		</div>
+		<!-- 积分 -->
+		<div class="point poi3">
+			<h1 class="bot"><em>底分：</em><p></p></h1>
+			<h1 class="total"><em>总分：</em><p></p></h1>
+		</div>
+	</div>
+</div>
+</body>
+</html>
